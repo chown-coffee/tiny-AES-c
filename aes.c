@@ -62,7 +62,6 @@ NOTE:   String length must be evenly divisible by 16byte (str_len % 16 == 0)
   #define MULTIPLY_AS_A_FUNCTION 0
 #endif
 
-
 /*****************************************************************************/
 /* Private variables:                                                        */
 /*****************************************************************************/
@@ -480,6 +479,7 @@ InvCipher(state_t* state, const uint8_t* RoundKey)
 }
 #endif // #if (defined(CBC) && CBC == 1) || (defined(ECB) && ECB == 1)
 
+
 /*****************************************************************************/
 /* Public functions:                                                         */
 /*****************************************************************************/
@@ -492,6 +492,7 @@ AES_ECB_encrypt(const struct AES_ctx* ctx, uint8_t* buf)
   // The next function call encrypts the PlainText with the Key using AES algorithm.
   Cipher((state_t*)buf, ctx->RoundKey);
 }
+
 
 void
 AES_ECB_decrypt(const struct AES_ctx* ctx, uint8_t* buf)
@@ -512,6 +513,7 @@ XorWithIv(uint8_t* buf, const uint8_t* Iv)
   }
 }
 
+
 void
 AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t* buf, uint32_t length)
 {
@@ -527,6 +529,7 @@ AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t* buf, uint32_t length)
   /* store Iv in ctx for next call */
   memcpy(ctx->Iv, Iv, AES_BLOCKLEN);
 }
+
 
 void
 AES_CBC_decrypt_buffer(struct AES_ctx* ctx, uint8_t* buf,  uint32_t length)
